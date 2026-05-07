@@ -1,0 +1,13 @@
+<h1>Deep Link PoC</h1>
+<p>Click below to test deep links:</p>
+<ul>
+  <li><a href="/product?gclid=test_gclid_123">Test Product with GCLID</a></li>
+  <li><a href="/product?wbraid=test_wbraid_456">Test Product with WBRAID</a></li>
+</ul>
+<script>
+  // Helper to dynamically set href based on current location to ensure full URL works if intercepted
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    link.href = window.location.origin + window.location.pathname.replace('/index.html', '') + link.getAttribute('href');
+  });
+</script>

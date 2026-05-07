@@ -8,6 +8,7 @@
   // Helper to dynamically set href based on current location to ensure full URL works if intercepted
   const links = document.querySelectorAll('a');
   links.forEach(link => {
-    link.href = window.location.origin + window.location.pathname.replace('/index.html', '') + link.getAttribute('href');
+    const basePath = window.location.pathname.replace('/index.html', '').replace(/\/$/, '');
+    link.href = window.location.origin + basePath + link.getAttribute('href');
   });
 </script>
